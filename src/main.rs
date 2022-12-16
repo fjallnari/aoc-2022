@@ -5,7 +5,6 @@ mod day01;
 
 
 fn main() {
-
     let aoc_days = HashMap::from([
         (String::from("01"), day01::calorie_count)
     ]);
