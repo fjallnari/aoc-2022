@@ -1,6 +1,5 @@
 use crate::read_lines;
 
-
 /// --- Day 2: Rock Paper Scissors ---
 pub fn solve(input_path: String) {
     let scenarios = [

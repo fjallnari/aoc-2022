@@ -5,6 +5,7 @@ use std::io::{self, BufRead};
 
 mod day01;
 mod day02;
+mod day03;
 
 struct Config {
     day: String,
@@ -13,7 +14,8 @@ struct Config {
 fn main() {
     let aoc_days = HashMap::from([
         (String::from("01"), day01::solve as fn(String)),
-        (String::from("02"), day02::solve as fn(String))
+        (String::from("02"), day02::solve as fn(String)),
+        (String::from("03"), day03::solve as fn(String))
     ]);
 
     let args: Vec<String> = env::args().collect();
