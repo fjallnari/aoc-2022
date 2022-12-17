@@ -1,12 +1,19 @@
 use std::env;
 use std::collections::HashMap;
+use std::fs::File;
+use std::io::{self, BufRead};
 
 mod day01;
+mod day02;
 
+struct Config {
+    day: String,
+}
 
 fn main() {
     let aoc_days = HashMap::from([
-        (String::from("01"), day01::calorie_count)
+        (String::from("01"), day01::solve as fn(String)),
+        (String::from("02"), day02::solve as fn(String))
     ]);
 
     let args: Vec<String> = env::args().collect();
@@ -28,10 +35,6 @@ fn main() {
 
 }
 
-struct Config {
-    day: String,
-}
-
 fn parse_config(args: &[String]) -> Config {
     let day: String;
 
@@ -42,4 +45,9 @@ fn parse_config(args: &[String]) -> Config {
     }
 
     Config { day }
+}
+
+pub fn read_lines(input_path: String) -> io::Lines<io::BufReader<File>> {
+    let file = File::open(input_path).expect("Could not load file.");
+    return io::BufReader::new(file).lines();
 }
