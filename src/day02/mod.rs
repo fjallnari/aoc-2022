@@ -12,7 +12,7 @@ pub fn solve(input_path: String) {
     let mut total_score_elf: u32 = 0;
 
     // not ideal, should be possible to refactor it to be more DRY
-    for line in read_lines(input_path) {
+    for line in read_lines(&input_path) {
         if let Ok(line) = line {
             for scenario in scenarios {
                 let shape_value = scenario.0.iter().position(|&shapes| shapes == line);

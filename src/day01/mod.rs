@@ -10,7 +10,7 @@ pub fn solve(input_path: String) {
     let mut last_calories: i32;
     let mut top_calories: [i32; TOP_N] = [0;TOP_N];
 
-    for line in read_lines(input_path) {
+    for line in read_lines(&input_path) {
         if let Ok(line) = line {
             if line.trim() == "" {
                 for index in (0..TOP_N).rev() {

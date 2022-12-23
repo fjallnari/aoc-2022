@@ -49,7 +49,7 @@ fn parse_config(args: &[String]) -> Config {
     Config { day }
 }
 
-pub fn read_lines(input_path: String) -> io::Lines<io::BufReader<File>> {
+pub fn read_lines(input_path: &String) -> io::Lines<io::BufReader<File>> {
     let file = File::open(input_path).expect("Could not load file.");
     return io::BufReader::new(file).lines();
 }
