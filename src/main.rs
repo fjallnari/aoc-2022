@@ -7,6 +7,7 @@ mod day01;
 mod day02;
 mod day03;
 mod day04;
+mod day05;
 
 struct Config {
     day: String,
@@ -17,7 +18,8 @@ fn main() {
         (String::from("01"), day01::solve as fn(String)),
         (String::from("02"), day02::solve as fn(String)),
         (String::from("03"), day03::solve as fn(String)),
-        (String::from("04"), day04::solve as fn(String))
+        (String::from("04"), day04::solve as fn(String)),
+        (String::from("05"), day05::solve as fn(String)),
     ]);
 
     let args: Vec<String> = env::args().collect();
