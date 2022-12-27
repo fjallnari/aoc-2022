@@ -2,12 +2,14 @@ use std::env;
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::{self, BufRead};
+use std::io::prelude::*;
 
 mod day01;
 mod day02;
 mod day03;
 mod day04;
 mod day05;
+mod day06;
 
 struct Config {
     day: String,
@@ -20,6 +22,7 @@ fn main() {
         (String::from("03"), day03::solve as fn(String)),
         (String::from("04"), day04::solve as fn(String)),
         (String::from("05"), day05::solve as fn(String)),
+        (String::from("06"), day06::solve as fn(String)),
     ]);
 
     let args: Vec<String> = env::args().collect();
@@ -56,4 +59,19 @@ fn parse_config(args: &[String]) -> Config {
 pub fn read_lines(input_path: &String) -> io::Lines<io::BufReader<File>> {
     let file = File::open(input_path).expect("Could not load file.");
     return io::BufReader::new(file).lines();
+}
+
+pub fn load_file_to_string(input_path: String) -> String {
+    let mut file = match File::open(input_path) {
+        Ok(file) => file,
+        Err(error) => panic!("Problem opening the file: {:?}", error),
+    };
+
+    let mut buffer = String::new();
+    match file.read_to_string(&mut buffer) {
+        Ok(_) => {},
+        Err(error) => panic!("Couldn't load file to string: {:?}", error),
+    };
+    
+    return buffer;
 }
